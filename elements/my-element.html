@@ -7,7 +7,7 @@
 <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
 <link rel="import" href="../bower_components/core-menu/core-submenu.html">
 
-<polymer-element name="my-element" noscript>
+<polymer-element name="my-element">
 	<template>
 		<core-scaffold id="core_scaffold">
 			<core-header-panel mode="seamed" id="core_header_panel" navigation flex>
@@ -20,4 +20,12 @@
 			<div id="div" tool>Feed</div>
 		</core-scaffold>
 	</template>
+
+	<script>
+		Polymer();
+
+		var items = document.querySelector('core-menu');
+		console.log('ayyyy');
+	</script>
+
 </polymer-element>

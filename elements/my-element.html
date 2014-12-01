@@ -22,10 +22,10 @@
 	</template>
 
 	<script>
-		Polymer();
-
-		var items = document.querySelector('core-menu');
-		console.log('ayyyy');
+Polymer('my-element', {
+			getMenu: function() {
+				document.querySelector('core-menu');
+			}	
+		})
 	</script>
-
 </polymer-element>

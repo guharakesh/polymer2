@@ -17,7 +17,24 @@
 	</head>
 
 	<body>
-		<my-element></my-element>
+		<core-scaffold id="core_scaffold">
+			<core-header-panel mode="seamed" id="core_header_panel" navigation flex>
+				<core-toolbar id="core_toolbar"></core-toolbar>
+				<core-menu valueattr="label" id="core_menu" theme="core-light-theme">
+					<core-item id="core_item" icon="settings" label="Item1" horizontal center layout></core-item>
+					<core-item id="core_item1" icon="settings" label="Item2" horizontal center layout></core-item>
+				</core-menu>
+			</core-header-panel>
+			<div id="div" tool>Feed</div>
+		</core-scaffold>
+
+		<script>
+			var menu = document.querySelector('core-menu');
+
+			menu.addEventListener('core-select', function(){
+				console.log("Selected: "  + menu.selected);
+			});
+		</script>
 	</body>
 
 </html>

@@ -2,18 +2,18 @@ let SessionLoad = 1
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <Nul> 
-inoremap <expr> <Up> pumvisible() ? "\" : "\<Up>"
-inoremap <expr> <S-Tab> pumvisible() ? "\" : "\<S-Tab>"
 inoremap <expr> <Down> pumvisible() ? "\" : "\<Down>"
+inoremap <expr> <S-Tab> pumvisible() ? "\" : "\<S-Tab>"
+inoremap <expr> <Up> pumvisible() ? "\" : "\<Up>"
+inoremap <Nul> 
 inoremap <silent> <expr> <Plug>delimitMateS-BS delimitMate#WithinEmptyPair() ? "\<Del>" : "\<S-BS>"
 inoremap <silent> <Plug>delimitMateBS =delimitMate#BS()
 nnoremap \d :YcmShowDetailedDiagnostic
 nmap <silent> \ig <Plug>IndentGuidesToggle
 nmap gx <Plug>NetrwBrowseX
-nnoremap <F8> :call conque_term#set_mappings("toggle")
-nnoremap <silent> <F10> :call conque_term#send_file()
 vnoremap <silent> <F9> :call conque_term#send_selected(visualmode())
+nnoremap <silent> <F10> :call conque_term#send_file()
+nnoremap <F8> :call conque_term#set_mappings("toggle")
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
 nnoremap <silent> <F11> :call conque_term#exec_file()
 imap  O
@@ -45,27 +45,20 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +13 index.html
-badd +0 bash\ -\ 1
-badd +0 elements/my-element.html
+badd +1 elements/my-element.html
+badd +0 ~/dev/polymer2/bash\ -\ 1
 args index.html
 edit index.html
 set splitbelow splitright
 wincmd _ | wincmd |
 split
 1wincmd k
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 wincmd w
 set nosplitbelow
 wincmd t
 set winheight=1 winwidth=1
 exe '1resize ' . ((&lines * 39 + 25) / 51)
-exe 'vert 1resize ' . ((&columns * 109 + 109) / 219)
-exe '2resize ' . ((&lines * 39 + 25) / 51)
-exe 'vert 2resize ' . ((&columns * 109 + 109) / 219)
-exe '3resize ' . ((&lines * 9 + 25) / 51)
+exe '2resize ' . ((&lines * 9 + 25) / 51)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
@@ -186,154 +179,25 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 36 - ((35 * winheight(0) + 19) / 39)
+let s:l = 27 - ((26 * winheight(0) + 19) / 39)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-36
+27
 normal! 09|
-wincmd w
-argglobal
-edit elements/my-element.html
-let s:cpo_save=&cpo
-set cpo&vim
-imap <buffer> <S-BS> <Plug>delimitMateS-BS
-imap <buffer> <BS> <Plug>delimitMateBS
-imap <buffer> <silent> g <Plug>delimitMateJumpMany
-imap <buffer>  <Plug>delimitMateBS
-imap <buffer> " <Plug>delimitMate"
-imap <buffer> ' <Plug>delimitMate'
-imap <buffer> ( <Plug>delimitMate(
-imap <buffer> ) <Plug>delimitMate)
-imap <buffer> < <Plug>delimitMate<
-imap <buffer> > <Plug>delimitMate>
-imap <buffer> [ <Plug>delimitMate[
-imap <buffer> ] <Plug>delimitMate]
-imap <buffer> ` <Plug>delimitMate`
-imap <buffer> { <Plug>delimitMate{
-imap <buffer> } <Plug>delimitMate}
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal noautoindent
-setlocal nobinary
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-setlocal colorcolumn=
-setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
-setlocal commentstring=<!--%s-->
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=youcompleteme#Complete
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-setlocal nocursorline
-setlocal define=
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal noexpandtab
-if &filetype != 'html'
-setlocal filetype=html
-endif
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=
-setlocal formatoptions=tcq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=HtmlIndent()
-setlocal indentkeys=o,O,<Return>,<>>,{,},!^F
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,$
-setlocal keywordprg=
-setlocal nolinebreak
-setlocal nolisp
-setlocal nolist
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:],<:>
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=octal,hex
-setlocal nonumber
-setlocal numberwidth=4
-setlocal omnifunc=htmlcomplete#CompleteTags
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal nosmartindent
-setlocal softtabstop=0
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en
-setlocal statusline=
-setlocal suffixesadd=
-setlocal swapfile
-setlocal synmaxcol=3000
-if &syntax != 'html'
-setlocal syntax=html
-endif
-setlocal tabstop=2
-setlocal tags=
-setlocal textwidth=0
-setlocal thesaurus=
-setlocal noundofile
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 19) / 39)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
-lcd ~/dev/polymer2
 wincmd w
 argglobal
 enew
 file ~/dev/polymer2/bash\ -\ 1
 let s:cpo_save=&cpo
 set cpo&vim
-inoremap <buffer> <silent> <End> :py ConqueTerm_1.write(u("\x1bOF"))
-inoremap <buffer> <silent> <Home> :py ConqueTerm_1.write(u("\x1bOH"))
-inoremap <buffer> <silent> <Left> :py ConqueTerm_1.write(u("\x1b[D"))
-inoremap <buffer> <silent> <Right> :py ConqueTerm_1.write(u("\x1b[C"))
-inoremap <buffer> <silent> <Down> :py ConqueTerm_1.write(u("\x1b[B"))
-inoremap <buffer> <silent> <Up> :py ConqueTerm_1.write(u("\x1b[A"))
 inoremap <buffer> <silent> <S-Space> :py ConqueTerm_1.write(u(" "))
+inoremap <buffer> <silent> <Up> :py ConqueTerm_1.write(u("\x1b[A"))
+inoremap <buffer> <silent> <Down> :py ConqueTerm_1.write(u("\x1b[B"))
+inoremap <buffer> <silent> <Right> :py ConqueTerm_1.write(u("\x1b[C"))
+inoremap <buffer> <silent> <Left> :py ConqueTerm_1.write(u("\x1b[D"))
+inoremap <buffer> <silent> <Home> :py ConqueTerm_1.write(u("\x1bOH"))
+inoremap <buffer> <silent> <End> :py ConqueTerm_1.write(u("\x1bOF"))
 inoremap <buffer> <silent> <S-BS> :py ConqueTerm_1.write(u("\x08"))
 inoremap <buffer> <silent> <BS> :py ConqueTerm_1.write(u("\x08"))
 nnoremap <buffer> <silent>  :py ConqueTerm_1.write_ord(3)
@@ -353,8 +217,8 @@ inoremap <buffer> <silent>  :py ConqueTerm_1.write_ord(3)
 inoremap <buffer> <silent>  :py ConqueTerm_1.write_ord(4)
 inoremap <buffer> <silent>  :py ConqueTerm_1.write_ord(5)
 inoremap <buffer> <silent>  :py ConqueTerm_1.write_ord(6)
-inoremap <buffer> <silent>  :py ConqueTerm_1.write_ord(7)
 imap <buffer> <silent> g <Plug>delimitMateJumpMany
+inoremap <buffer> <silent>  :py ConqueTerm_1.write_ord(7)
 inoremap <buffer> <silent>  :py ConqueTerm_1.write_ord(8)
 inoremap <buffer> <silent> 	 :py ConqueTerm_1.write_ord(9)
 inoremap <buffer> <silent> <NL> :py ConqueTerm_1.write_ord(10)
@@ -576,12 +440,8 @@ setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 wincmd w
-3wincmd w
 exe '1resize ' . ((&lines * 39 + 25) / 51)
-exe 'vert 1resize ' . ((&columns * 109 + 109) / 219)
-exe '2resize ' . ((&lines * 39 + 25) / 51)
-exe 'vert 2resize ' . ((&columns * 109 + 109) / 219)
-exe '3resize ' . ((&lines * 9 + 25) / 51)
+exe '2resize ' . ((&lines * 9 + 25) / 51)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

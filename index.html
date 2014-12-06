@@ -26,7 +26,7 @@
 
 	<body>
 		<core-scaffold id="core_scaffold">
-			<my-card id="my_card" layout vertical></my-card>
+			<my-card id="my_card" layout vertical my-card></my-card>
 			<core-header-panel mode="seamed" id="core_header_panel" navigation flex>
 				<core-toolbar id="core_toolbar"></core-toolbar>
 				<core-menu valueattr="label" id="core_menu" theme="core-light-theme">
@@ -39,9 +39,16 @@
 
 		<script>
 			var menu = document.querySelector('core-menu');
+			var card = document.querySelector('my-card');
 
 			menu.addEventListener('core-select', function(){
 				console.log("Selected: "  + menu.selected);
+				if (menu.selected === 'Item2') {
+					card.hidden = true;
+					} else {
+						card.hidden = false;
+					}
+				card.show = menu.selected;
 			});
 		</script>
 	</body>

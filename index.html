@@ -22,6 +22,10 @@
 				font-family: 'RobotoDraft', sans-serif;
 			}
 
+			core-scaffold {
+				display: flex;
+			}
+
 			core-header-panel {
 			  height: 100%;
 			  overflow: auto;
@@ -36,7 +40,7 @@
 
 	<body>
 		<core-scaffold id="core_scaffold">
-			<my-card id="my_card" layout vertical my-card></my-card>
+			<my-card id="my_card"layout vertical my-card></my-card>
 			<core-header-panel mode="seamed" id="core_header_panel" navigation flex>
 				<core-toolbar id="core_toolbar"></core-toolbar>
 				<core-menu valueattr="label" id="core_menu" theme="core-light-theme">
